@@ -1,0 +1,30 @@
+{% extends '../layout.html' %}
+{% block content %}
+<div class="content-section">
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Sold</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+            <tr style="cursor: pointer; cursor: hand;">
+              <th scope="row">{{ forloop.counter }}</th>
+              <th scope="col">{{ product.Name }}</th>
+              <th scope="col">{{ product.Category }}</th>
+              <th scope="col">{{ product.Quantity }}</th>
+              <th scope="col">{{ product.Price }}</th>
+              <th scope="col">{{ product.Sold }}</th>
+              <th><a class="btn btn-danger btn-sm" href="{% url 'update_product' product.id%}">update<a class="btn btn-danger btn-sm" href="{% url 'delete_product' product.id%}">delete</th>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
